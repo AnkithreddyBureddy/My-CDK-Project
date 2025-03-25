@@ -6,8 +6,8 @@ phases:
       - npm install
   build:
     commands:
-      - cdk synth --profile default
-      - cdk deploy --profile default
+      - cdk synth
+      - cdk deploy --require-approval never
 artifacts:
   files:
     - '**/*'
