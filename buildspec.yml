@@ -1,13 +1,17 @@
 version: 0.2
+ 
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
     commands:
-      - npm install -g aws-cdk
-      - npm install
+      - echo Installing dependencies...
+      - npm install -g aws-cdk  # Install AWS CDK globally
+      - npm install  # Install project dependencies
   build:
     commands:
-      - cdk synth
-      - cdk deploy --require-approval never
+      - echo Running CDK synth...
+      - cdk synth  # Run CDK synthesis
 artifacts:
   files:
-    - '**/*'
+    - cdk.out/**
