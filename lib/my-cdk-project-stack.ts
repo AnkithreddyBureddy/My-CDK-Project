@@ -1,13 +1,13 @@
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';  // Import Construct from 'constructs'
 import * as codepipeline from 'aws-cdk-lib/aws-codepipeline';
 import * as codepipeline_actions from 'aws-cdk-lib/aws-codepipeline-actions';
 import * as codebuild from 'aws-cdk-lib/aws-codebuild';
-import * as cdk from 'aws-cdk-lib';
 
 export class MyCdkProjectStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // Source and Build Artifacts
     const sourceOutput = new codepipeline.Artifact();
     const buildOutput = new codepipeline.Artifact();
 
@@ -28,9 +28,9 @@ export class MyCdkProjectStack extends cdk.Stack {
           actions: [
             new codepipeline_actions.GitHubSourceAction({
               actionName: 'GitHub_Source',
-              owner: 'AnkithreddyBureddy',  // Replace with your GitHub username
-              repo: 'My-CDK-Project',  // Replace with your GitHub repo name
-              oauthToken: cdk.SecretValue.secretsManager('github-token'),  // Ensure your GitHub token is stored in AWS Secrets Manager
+              owner: 'AnkithreddyBureddy',
+              repo: 'My-CDK-Project',
+              oauthToken: cdk.SecretValue.unsafePlainText('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'),
               output: sourceOutput,
               branch: 'main',
             }),
